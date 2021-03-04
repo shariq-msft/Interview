@@ -17,6 +17,7 @@ Step 3: Find an alternate solution and discuss pros/cons.
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("====================== Q1 =========================");
         Deck deck = new Deck();
         System.out.println("BEFORE SHUFFLE: ");
         System.out.println(deck.toString());
@@ -26,5 +27,28 @@ public class Main {
         deck.alternatingColorShuffle();
         System.out.println("AFTER COLOR SHUFFLE: ");
         System.out.println(deck.toString());
+
+        System.out.println("====================== Q2 =========================");
+        System.out.println(lowestSameDigitNum(100, 500));
+    }
+
+    // assuming both min and max are inclusive
+    private static int lowestSameDigitNum(int min, int max) {
+        for (int i = min; i <= max; i++) {
+            int num = i;
+            int digit = num % 10;
+            while (num != 0) {
+                if (digit != num % 10) {
+                    break;
+                }
+                num /= 10;
+            }
+
+            if (num == 0) {
+                return i;
+            }
+        }
+        // didn't find any num that satisfies condition
+        return -1;
     }
 }
